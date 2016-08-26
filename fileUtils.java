@@ -1,9 +1,11 @@
-/*¡¡
-	1.´Ó¾ÉÎÄ¼ş¿½±´ÄÚÈİµ½ĞÂÎÄ¼ş 
-	2.É¾³ı¾ÉÎÄ¼ş 
+	/*ã€€
+	1.ä»æ—§æ–‡ä»¶æ‹·è´å†…å®¹åˆ°æ–°æ–‡ä»¶ 
+	2.åˆ é™¤æ—§æ–‡ä»¶ 
 	@param oldPath the path+name of old file 
 	@param newPath the path+name of new file 
-	@throws Exception */
+	@throws Exception
+	160826
+	*/
 	
 	private void transferFile(String oldPath, String newPath) throws Exception {
 		int byteread = 0;
@@ -23,11 +25,11 @@
 					fout.close();
 				}
 				if (fin != null) {
-					fin.close();// Èç¹ûÁ÷²»¹Ø±Õ,ÔòÉ¾³ı²»ÁË¾ÉÎÄ¼ş
+					fin.close();// å¦‚æœæµä¸å…³é—­,åˆ™åˆ é™¤ä¸äº†æ—§æ–‡ä»¶
 					delFile(oldFile);
 				}
 			} else {
-				throw new Exception("ĞèÒª×ªÒÆµÄÎÄ¼ş²»´æÔÚ!");
+				throw new Exception("éœ€è¦è½¬ç§»çš„æ–‡ä»¶ä¸å­˜åœ¨!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -40,7 +42,7 @@
 	}
 
 	/**
-	 * É¾³ıÎÄ¼ş,Ö»Ö§³ÖÉ¾³ıÎÄ¼ş,²»Ö§³ÖÉ¾³ıÄ¿Â¼
+	 * åˆ é™¤æ–‡ä»¶,åªæ”¯æŒåˆ é™¤æ–‡ä»¶,ä¸æ”¯æŒåˆ é™¤ç›®å½•
 	 * 
 	 * @param file
 	 * @throws Exception
@@ -48,26 +50,26 @@
 	private void delFile(File files) throws Exception {
 		File file = new File(FGlobal.TWFILEPATH+files.getName());
 		if (!file.exists()) {
-			throw new Exception("ÎÄ¼ş" + file.getName() + "²»´æÔÚ,ÇëÈ·ÈÏ!");
+			throw new Exception("æ–‡ä»¶" + file.getName() + "ä¸å­˜åœ¨,è¯·ç¡®è®¤!");
 		}
 		if (file.isFile()) {
 			if (file.canWrite()) {
 				boolean del = file.delete();
-				log.info(file.getName()+ " É¾³ı"+(del==true?"³É¹¦£¡":"Ê§°Ü£¡"));
+				log.info(file.getName()+ " åˆ é™¤"+(del==true?"æˆåŠŸï¼":"å¤±è´¥ï¼"));
 			} else {
-				throw new Exception("ÎÄ¼ş" + file.getName() + "Ö»¶Á,ÎŞ·¨É¾³ı,ÇëÊÖ¶¯É¾³ı!");
+				throw new Exception("æ–‡ä»¶" + file.getName() + "åªè¯»,æ— æ³•åˆ é™¤,è¯·æ‰‹åŠ¨åˆ é™¤!");
 			}
 		} else {
-			throw new Exception("ÎÄ¼ş" + file.getName() + "²»ÊÇÒ»¸ö±ê×¼µÄÎÄ¼ş,ÓĞ¿ÉÄÜÎªÄ¿Â¼,ÇëÈ·ÈÏ!");
+			throw new Exception("æ–‡ä»¶" + file.getName() + "ä¸æ˜¯ä¸€ä¸ªæ ‡å‡†çš„æ–‡ä»¶,æœ‰å¯èƒ½ä¸ºç›®å½•,è¯·ç¡®è®¤!");
 		}
 	}
 	
-	// ÈÕÆÚ¸ñÊ½´¦Àí
+	// æ—¥æœŸæ ¼å¼å¤„ç†
 	public String dateToString(String format, Date date) {
 		return new SimpleDateFormat(format).format(date);
 	}
 
-	// ÈÕÆÚ¸ñÊ½´¦Àí
+	// æ—¥æœŸæ ¼å¼å¤„ç†
 	public Date stringToDate(String partern, String date) throws ParseException {
 		return new SimpleDateFormat(partern).parse(date);
 	}
